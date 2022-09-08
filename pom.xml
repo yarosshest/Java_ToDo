@@ -22,5 +22,13 @@
             <artifactId>jsoup</artifactId>
             <version>1.15.3</version>
         </dependency>
+
+        <dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>5.2.2</version>
+        </dependency>
     </dependencies>
+
 </project>
