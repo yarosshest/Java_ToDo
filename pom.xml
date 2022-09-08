@@ -8,6 +8,13 @@
     <artifactId>example</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- Maven doesn't work without it -->
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <dependencies>
         <dependency>
             <!-- jsoup HTML parser library @ https://jsoup.org/ -->
