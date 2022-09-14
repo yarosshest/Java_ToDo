@@ -2,16 +2,15 @@ package scr.main.java.data;
 import java.sql.*;
 import java.util.Objects;
 
-public class SQLiteJDBC {
+public class UserSQL {
     private static Connection c;
     private static Statement stat;
     private static ResultSet res;
 
-    public SQLiteJDBC() throws ClassNotFoundException, SQLException {
+    public UserSQL() throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         c = DriverManager.getConnection("jdbc:sqlite:./scr/main/db/db");
         stat = c.createStatement();
-        System.out.println("Opened database successfully");
     }
 
     private boolean CheckLogin(String login) throws SQLException{
@@ -38,7 +37,7 @@ public class SQLiteJDBC {
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        SQLiteJDBC a = new SQLiteJDBC();
+        UserSQL a = new UserSQL();
         a.SetUserCol(1,"group", "ИКБО-06-21");
 
     }
