@@ -1,4 +1,4 @@
-package scr.main.java.data;
+package main.java.data;
 import java.sql.*;
 import java.util.Objects;
 
