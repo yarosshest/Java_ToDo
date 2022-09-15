@@ -24,10 +24,10 @@ class ScheduleTeam extends ScheduleCourse {
 		String path_new_file = thisDir.toString();
 		System.out.println(path_new_file);
 		*/
-		String path_new_file = "/home/andre/IdeaProjects/Java_ToDo/scr/main/java/data/resources/"+this.GetInstitute()+"_"+this.GetCourse()+".xlsx";
+		String path_new_file = "./scr/main/java/data/resources/"+this.GetInstitute()+"_"+this.GetCourse()+".xlsx";
 		try {
 			URL url = new URL(this.url);
-			Path exel_schedule = Path.of(path_new_file);  // TODO: replace File on Path
+			Path exel_schedule = Path.of(path_new_file);
 			InputStream input_stream = url.openStream();
 			Files.copy(input_stream, exel_schedule);
 		} catch (IOException e) {
