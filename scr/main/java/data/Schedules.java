@@ -1,4 +1,4 @@
-package main.java.data;
+package scr.main.java.data;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -14,13 +14,7 @@ public class Schedules {
 
     private void ClearSchedules() {
         for (ScheduleCourse cr: list_urls_schedules) {
-            if (cr.PathExist()) {
-                File file = new File(cr.GetPath());
-                boolean fl = file.delete();
-                if (!fl) {
-                    System.out.println("File: " + cr.GetPath() + " not delete!");
-                }
-            }
+            cr.ClearSchedule();
         }
         list_urls_schedules.clear();
     }

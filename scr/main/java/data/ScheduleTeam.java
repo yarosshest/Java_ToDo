@@ -1,4 +1,4 @@
-package main.java.data;
+package scr.main.java.data;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -6,6 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
 
 class ScheduleTeam extends ScheduleCourse {
 	private static final int COUNT_WEEKDAY = 6;
@@ -26,9 +27,9 @@ class ScheduleTeam extends ScheduleCourse {
 		String path_new_file = "/home/andre/IdeaProjects/Java_ToDo/scr/main/java/data/resources/"+this.GetInstitute()+"_"+this.GetCourse()+".xlsx";
 		try {
 			URL url = new URL(this.url);
-			File exel_schedule = new File(path_new_file);  // TODO: replace File on Path
+			Path exel_schedule = Path.of(path_new_file);  // TODO: replace File on Path
 			InputStream input_stream = url.openStream();
-			Files.copy(input_stream, exel_schedule.toPath());
+			Files.copy(input_stream, exel_schedule);
 		} catch (IOException e) {
 			throw new RuntimeException(e);
 		}
@@ -86,5 +87,6 @@ class ScheduleTeam extends ScheduleCourse {
 				new ScheduleCourse("IIT", "2", "https://webservices.mirea.ru/upload/iblock/950/ruxxq2tvxif6xd7qxsbx8l0cdo9qm11y/IIT-2-kurs_14.09.2022_1.xlsx")
 				, "ИКБО-06-21"
 		);
+		obj.ClearSchedule();
 	}
 }
