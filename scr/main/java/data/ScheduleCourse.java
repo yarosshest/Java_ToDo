@@ -1,4 +1,4 @@
-package scr.main.java.data;
+package java.data;
 
 import java.io.File;
 
@@ -21,6 +21,7 @@ class ScheduleCourse {
 			if (!fl) {
 				System.out.println("File: " + this.path + " not delete!");
 			}
+			this.path = null;
 		}
 	}
 

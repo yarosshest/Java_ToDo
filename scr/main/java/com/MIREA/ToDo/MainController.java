@@ -1,4 +1,4 @@
-package com.MIREA.ToDo;
+package java.com.MIREA.ToDo;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

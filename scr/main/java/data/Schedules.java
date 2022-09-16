@@ -1,4 +1,4 @@
-package scr.main.java.data;
+package java.data;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
