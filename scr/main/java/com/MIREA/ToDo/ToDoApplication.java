@@ -1,4 +1,4 @@
-package java.com.MIREA.ToDo;
+package com.MIREA.ToDo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
