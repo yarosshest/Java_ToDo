@@ -1,4 +1,4 @@
-package scr.main.java.data.sql;
+package java.data.sql;
 import java.sql.*;
 import java.util.Objects;
 import java.sql.DriverManager;

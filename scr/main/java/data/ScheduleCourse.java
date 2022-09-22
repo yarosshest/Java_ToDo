@@ -1,4 +1,4 @@
-package scr.main.java.data;
+package data;
 
 import java.io.File;
 

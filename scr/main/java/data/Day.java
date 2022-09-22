@@ -1,4 +1,4 @@
-package scr.main.java.data;
+package data;
 
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
