@@ -1,4 +1,4 @@
-package java.data.sql;
+package data.sql;
 import java.sql.*;
 import java.util.Objects;
 
