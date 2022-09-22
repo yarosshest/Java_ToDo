@@ -5,8 +5,11 @@ import java.util.Objects;
 public class UserSQL {
     private final MasterSQL m;
 
-    public UserSQL(MasterSQL master) {
+    public UserSQL(MasterSQL master) throws SQLException {
+
         m = master;
+        String sql = "SELECT EXISTS(SELECT name FROM sqlite_master WHERE type='table' AND name='User');";
+        ResultSet res = m.stat.executeQuery(sql);
     }
 
     private boolean CheckLogin(String login) throws SQLException{
@@ -32,10 +35,15 @@ public class UserSQL {
         m.stat.executeUpdate("UPDATE User SET '"+coll+"' = '"+val+"' where id = "+id+";");
     }
 
+    public boolean CheckUser(String Ulog, String Upass) throws SQLException {
+        ResultSet res = m.stat.executeQuery("SELECT login, pass FROM User WHERE login = '"+Ulog+"' AND pass = '"+Upass+"';");
+        return res.getFetchSize() > 0;
+    }
+
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         MasterSQL m = new MasterSQL();
         UserSQL a = new UserSQL(m);
-        a.SetUserCol(1,"group", "ИКБО-06-21");
-
+        a.AddUser("admin", "admin");
+        System.out.print(a.CheckUser("admin", "admin"));
     }
 }

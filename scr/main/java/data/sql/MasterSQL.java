@@ -8,7 +8,7 @@ public class MasterSQL {
 
     public MasterSQL () throws ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
-        c = DriverManager.getConnection("jdbc:sqlite:./scr/main/db/db");
+        c = DriverManager.getConnection("jdbc:sqlite:db");
         stat = c.createStatement();
     }
 }

@@ -10,7 +10,7 @@ public class MainController {
     @GetMapping("/")
     public String home(Model model) {
         model.addAttribute("title", "Вход");
-        return "Home";
+        return "home";
     }
     @GetMapping("/main")
     public String MainPage(Model model) {
