@@ -6,7 +6,6 @@ public class UserSQL {
     private final MasterSQL m;
 
     public UserSQL(MasterSQL master) throws SQLException {
-
         m = master;
         String sql = "SELECT EXISTS(SELECT name FROM sqlite_master WHERE type='table' AND name='User');";
         ResultSet res = m.stat.executeQuery(sql);
@@ -17,7 +16,6 @@ public class UserSQL {
         while(res.next())
             if (Objects.equals(login, res.getString("login")))
                 return false;
-
         return true;
     }
 
@@ -35,7 +33,7 @@ public class UserSQL {
         m.stat.executeUpdate("UPDATE User SET '"+coll+"' = '"+val+"' where id = "+id+";");
     }
 
-    public boolean CheckUser(String Ulog, String Upass) throws SQLException {
+    public boolean CheckUser(String Ulog, String Upass) throws SQLException {  // stasit ?
         ResultSet res = m.stat.executeQuery("SELECT login, pass FROM User WHERE login = '"+Ulog+"' AND pass = '"+Upass+"';");
         return res.getFetchSize() > 0;
     }
