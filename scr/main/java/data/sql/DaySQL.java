@@ -15,9 +15,16 @@ public class DaySQL {
                 ");";
     }
 
-    public boolean AddDay(String date, int group) throws SQLException {
-        m.stat.execute("INSERT INTO Day (date, group_id) VALUES ('"+date+"', '"+group+"');");
-        return true;
+    public int AddDay(String Udate, int group) throws SQLException {
+        String sql = "INSERT INTO Day (date, group_id) VALUES ('" + Udate + "', '" + group + "');";
+        PreparedStatement ps = m.c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.execute();
+        ResultSet rs = ps.getGeneratedKeys();
+        if (rs.next()) {
+            return rs.getInt(1);
+        } else {
+            return -1;
+        }
     }
 
     public int GetId(String date, int group) throws SQLException {

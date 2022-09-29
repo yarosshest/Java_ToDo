@@ -8,7 +8,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-class ScheduleTeam extends ScheduleCourse {
+public class ScheduleTeam extends ScheduleCourse {
 	private static final int COUNT_WEEKDAY = 6;
 	private static final int NAME_TEAM_ROW_INDEX = 1;
 	private static final int NAME_WEEKDAY_COLUMN_INDEX = 0;

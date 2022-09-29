@@ -33,12 +33,19 @@ public class GroupSQL {
         return -1;
     }
 
-    public boolean AddGroup(String name) throws SQLException {
+    public int AddGroup(String name) throws SQLException {
         if (!CheckExists(name)){
-            m.stat.execute("INSERT INTO 'Group' (name) VALUES ('"+name+"');");
-            return true;
+            String sql = "INSERT INTO 'Group' (name) VALUES ('"+name+"');";
+            PreparedStatement ps = m.c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.execute();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                return -1;
+            }
         }
-        return false;
+        return -1;
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {

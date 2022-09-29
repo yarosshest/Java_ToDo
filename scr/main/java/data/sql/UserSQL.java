@@ -50,7 +50,7 @@ public class UserSQL {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         MasterSQL m = new MasterSQL();
         UserSQL a = new UserSQL(m);
-        a.AddUser("admin", "admin");
+        a.AddUser("adin", "admin");
         System.out.print(a.CheckUser("admin", "admin"));
     }
 }

@@ -41,7 +41,7 @@ public class Schedules {
             }
         }
     }
-    Schedules() {
+    public Schedules() {
         this.list_urls_schedules = new ArrayList<ScheduleCourse>();
         this.ReloadUrl();
     }
