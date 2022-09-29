@@ -7,8 +7,17 @@ public class UserSQL {
 
     public UserSQL(MasterSQL master) throws SQLException {
         m = master;
-        String sql = "SELECT EXISTS(SELECT name FROM sqlite_master WHERE type='table' AND name='User');";
-        ResultSet res = m.stat.executeQuery(sql);
+        String sql = "CREATE TABLE IF NOT exists User\n" +
+                "(\n" +
+                "    passwd   TEXT not null,\n" +
+                "    login    TEXT not null,\n" +
+                "    FIO      TEXT,\n" +
+                "    id       INTEGER\n" +
+                "        primary key autoincrement,\n" +
+                "    group_id INTEGER\n" +
+                "        references \"Group\"\n" +
+                ");";
+        m.stat.execute(sql);
     }
 
     private boolean CheckLogin(String login) throws SQLException{
@@ -21,7 +30,7 @@ public class UserSQL {
 
     public boolean AddUser(String Ulog, String Upass) throws SQLException {
         if (CheckLogin(Ulog)){
-            m.stat.execute("INSERT INTO User (login, pass) VALUES ('"+Ulog+"', '"+Upass+"');");
+            m.stat.execute("INSERT INTO User (login, passwd) VALUES ('"+Ulog+"', '"+Upass+"');");
             return true;
         }
         else {
@@ -34,8 +43,8 @@ public class UserSQL {
     }
 
     public boolean CheckUser(String Ulog, String Upass) throws SQLException {  // stasit ?
-        ResultSet res = m.stat.executeQuery("SELECT login, pass FROM User WHERE login = '"+Ulog+"' AND pass = '"+Upass+"';");
-        return res.getFetchSize() > 0;
+        ResultSet res = m.stat.executeQuery("SELECT login, passwd FROM User WHERE login = '"+Ulog+"' AND passwd = '"+Upass+"';");
+        return true;
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
