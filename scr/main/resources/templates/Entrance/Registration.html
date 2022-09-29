@@ -37,12 +37,22 @@
       border-bottom-right-radius: 0;
       border-bottom-left-radius: 0;
     }
-
     .form-signin input[type="password"] {
       margin-bottom: 10px;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
     }
+    .form-signin input[type="institute"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    .form-signin input[type="group"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
     .btn-lg {
       --bs-btn-padding-y: 0.3rem;
       --bs-btn-padding-x: 1rem;
@@ -62,20 +72,27 @@
 
     <div class="col-12">
       <label for="email" class="form-label">Придумайте имя пользователя</label>
-      <input type="email" class="form-control" id="email">
+      <input type="email" name="email" class="form-control" id="email">
+    </div>
+    <div class="col-12">
+      <label for="Password" class="form-label">Придумайте пароль</label>
+      <input type="password" name="password" class="form-control" id="Password" required="">
+    </div>
+    <div class="col-12">
+      <label for="Institute" class="form-label">Введите институт (Институт технологий управления)</label>
+      <input type="institute" name="institute" class="form-control" id="Institute" required="">
+    </div>
+    <div class="col-12">
+      <label for="Group" class="form-label">Введите группу [ИКБО-00-00]</label>
+      <input type="group" name="group" class="form-control" id="Group" required="">
     </div>
 
-    <div class="col-12">
-      <label for="address" class="form-label">Придумайте пароль</label>
-      <input type="text" class="form-control" id="address" required="">
-    </div>
     <br><br>
-    <a href="/" class="w-100 btn btn-lg btn-primary " type="submit" >Зарегистрироваться!</a>
+    <button type="submit" class="btn btn-success">Log in</button>
+    <a href="/" class="w-100 btn btn-lg btn-primary " type="submit" >entrance</a>
     <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
   </form>
   </main>
 </body>
-
-
 
 </html>
