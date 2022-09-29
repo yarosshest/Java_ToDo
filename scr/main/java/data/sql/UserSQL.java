@@ -43,7 +43,8 @@ public class UserSQL {
     }
 
     public boolean CheckUser(String Ulog, String Upass) throws SQLException {  // stasit ?
-        ResultSet res = m.stat.executeQuery("SELECT login, passwd FROM User WHERE login = '"+Ulog+"' AND passwd = '"+Upass+"';");
+        ResultSet res = m.stat.executeQuery("SELECT * FROM User WHERE login = '"+Ulog+"' AND passwd = '"+Upass+"';");
+        int t = res.getFetchSize();
         return true;
     }
 
