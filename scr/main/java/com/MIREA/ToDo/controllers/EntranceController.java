@@ -12,7 +12,7 @@ import data.sql.MasterSQL;
 import data.sql.UserSQL;
 
 @Controller
-public class MainController {
+public class EntranceController {
 
     @GetMapping("/")
     public String Home(Model model) {
