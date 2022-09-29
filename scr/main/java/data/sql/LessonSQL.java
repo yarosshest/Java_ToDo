@@ -6,8 +6,18 @@ public class LessonSQL {
 
     private final MasterSQL m;
 
-    public LessonSQL(MasterSQL master){
+    public LessonSQL(MasterSQL master) throws SQLException {
+
         m = master;
+        String sql = "CREATE TABLE IF NOT exists Lesson\n" +
+                "(\n" +
+                "    id      INTEGER not null primary key autoincrement,\n" +
+                "    name    TEXT    not null,\n" +
+                "    teacher TEXT,\n" +
+                "    pars    TEXT    not null,\n" +
+                "    day_id  INTEGER not null references day(id)\n" +
+                ");";
+        m.stat.execute(sql);
     }
 
     public int AddLesson(String Uname, String Upars, int DayId) throws SQLException {

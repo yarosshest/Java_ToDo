@@ -8,6 +8,13 @@ public class GroupSQL {
 
     public GroupSQL (MasterSQL master) throws ClassNotFoundException, SQLException {
         m = master;
+        String sql = "CREATE TABLE IF NOT exists \"Group\"\n" +
+                "(\n" +
+                "    id   INTEGER not null\n" +
+                "        primary key autoincrement,\n" +
+                "    name TEXT    not null\n" +
+                ");";
+        m.stat.execute(sql);
     }
 
     private boolean CheckExists(String name) throws SQLException{

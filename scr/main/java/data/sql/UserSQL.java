@@ -15,7 +15,7 @@ public class UserSQL {
                 "    id       INTEGER\n" +
                 "        primary key autoincrement,\n" +
                 "    group_id INTEGER\n" +
-                "        references \"Group\"\n" +
+                "        references \"Group\"(id)\n" +
                 ");";
         m.stat.execute(sql);
     }
