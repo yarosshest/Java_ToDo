@@ -1,6 +1,5 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <title th:text="${title}"/>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -42,6 +41,12 @@
             border-top-left-radius: 0;
             border-top-right-radius: 0;
         }
+        .btn-lg {
+            --bs-btn-padding-y: 0.3rem;
+            --bs-btn-padding-x: 1rem;
+            --bs-btn-font-size: 1.25rem;
+            --bs-btn-border-radius: 0.5rem;
+        }
 
     </style>
 </head>
@@ -50,28 +55,29 @@
 
 <main class="form-signin w-100 m-auto">
     <form>
-        <h1 class="h3 mb-3 fw-normal mt-100">Please sign in</h1>
+        <h1 class="h3 mb-3 fw-normal mt-100">Пожалуйста, авторизуйтесь</h1>
 
         <div class="form-floating">
             <input type="email" name = "email" class="form-control" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+            <label for="floatingInput">Имя пользователя</label>
         </div>
         <div class="form-floating">
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Пароль">
+            <label for="floatingPassword">Пароль</label>
         </div>
 
         <div class="checkbox mb-3">
             <label>
-                <input type="checkbox" value="remember-me"> Remember me
+                <input type="checkbox" value="remember-me"> Запомнить меня
             </label>
         </div>
-        <a href="/main" class="w-100 btn btn-lg btn-primary " type="submit" >Sign in</a>
+        <a href="/main" class="w-100 btn btn-lg btn-primary " type="submit" >Вход</a>
+        <br><br>
+        <a href="/registration" class="w-100 btn btn-lg btn-primary " type="submit" >Добавить нового пользователя</a>
         <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
     </form>
 </main>
 </body>
-
 
 
 </html>

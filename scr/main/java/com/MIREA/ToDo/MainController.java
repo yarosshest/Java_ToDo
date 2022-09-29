@@ -18,4 +18,10 @@ public class MainController {
         return "MainPage";
     }
 
+    @GetMapping("/registration")
+    public String Registration(Model model) {
+        model.addAttribute("title", "Регистрация");
+        return "Registration";
+    }
+
 }
