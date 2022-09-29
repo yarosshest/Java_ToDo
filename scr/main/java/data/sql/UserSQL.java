@@ -43,9 +43,8 @@ public class UserSQL {
     }
 
     public boolean CheckUser(String Ulog, String Upass) throws SQLException {  // stasit ?
-        ResultSet res = m.stat.executeQuery("SELECT * FROM User WHERE login = '"+Ulog+"' AND passwd = '"+Upass+"';");
-        int t = res.getFetchSize();
-        return true;
+        ResultSet res = m.stat.executeQuery("SELECT COUNT(*) FROM User WHERE login = '"+Ulog+"' AND passwd = '"+Upass+"';");
+        return res.getInt(1) == 1;
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
