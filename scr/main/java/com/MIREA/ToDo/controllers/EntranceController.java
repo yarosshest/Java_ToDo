@@ -19,6 +19,11 @@ public class EntranceController {
         model.addAttribute("title", "Вход");
         return "Entrance/Entrance";
     }
+    @GetMapping("entrance/firstpage")
+    public String FirstPage(Model model) {
+        model.addAttribute("title", "Добро пожаловать");
+        return "Entrance/FirstPage";
+    }
     @GetMapping("entrance/registration")
     public String Registration(Model model) {
         model.addAttribute("title", "Регистрация");
