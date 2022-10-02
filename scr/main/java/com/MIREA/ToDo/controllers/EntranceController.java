@@ -39,6 +39,6 @@ public class EntranceController {
         MasterSQL m = new MasterSQL();
         UserSQL a = new UserSQL(m);
         a.AddUser(email, password);
-        return "redirect:Entrance/Entrance";
+        return "Entrance/Entrance";
     }
 }
