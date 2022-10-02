@@ -15,7 +15,7 @@ public class UserSQL {
                 "    id       INTEGER\n" +
                 "        primary key autoincrement,\n" +
                 "    group_id INTEGER\n" +
-                "        references \"Group\"\n" +
+                "        references \"Group\"(id)\n" +
                 ");";
         m.stat.execute(sql);
     }
@@ -43,14 +43,14 @@ public class UserSQL {
     }
 
     public boolean CheckUser(String Ulog, String Upass) throws SQLException {  // stasit ?
-        ResultSet res = m.stat.executeQuery("SELECT login, passwd FROM User WHERE login = '"+Ulog+"' AND passwd = '"+Upass+"';");
-        return true;
+        ResultSet res = m.stat.executeQuery("SELECT COUNT(*) FROM User WHERE login = '"+Ulog+"' AND passwd = '"+Upass+"';");
+        return res.getInt(1) == 1;
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         MasterSQL m = new MasterSQL();
         UserSQL a = new UserSQL(m);
-        a.AddUser("admin", "admin");
+        a.AddUser("adin", "admin");
         System.out.print(a.CheckUser("admin", "admin"));
     }
 }
