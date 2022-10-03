@@ -13,4 +13,9 @@ public class MainPageController {
         return "MainPage";
     }
 
+    @GetMapping("/notes")
+    public String Notes(Model model) {
+        model.addAttribute("title", "Заметки");
+        return "Notes";
+    }
 }
