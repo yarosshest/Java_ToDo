@@ -27,15 +27,15 @@
             display: flex!important;
         }
     </style>
+    <link href="dashboard.css" rel="stylesheet">
 </head>
 
 <body class="text-center">
 <header th:insert="TaskManager/header :: header"></header>
 
-<div class="calendar-body">
-    <div class="calendar-view calendar-month">
-        <table>
-            <thead>
+<div class="table-responsive">
+    <table class="table table-striped table-sm">
+        <thead>
             <tr class="calendar-view-header">
                 <th>
                     <div>Понедельник</div>
@@ -63,7 +63,7 @@
                 </th>
             </tr>
             </thead>
-            <tbody>
+        <tbody>
             <tr>
                 <td class="calendar-data outside-current-date  ">
                     <div class="day-header">
@@ -389,7 +389,6 @@
             </tr>
             </tbody>
     </table>
-    </div>
 </div>
 
 </body>

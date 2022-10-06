@@ -7,15 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainPageController {
 
-    @GetMapping("/")
+    @GetMapping("/main")
     public String MainPage(Model model) {
         model.addAttribute("title", "Главная страница");
-        return "MainPage";
-    }
-
-    @GetMapping("/notes")
-    public String Notes(Model model) {
-        model.addAttribute("title", "Заметки");
-        return "Notes";
+        return "TaskManager/MainPage";
     }
 }

@@ -13,16 +13,15 @@ import data.sql.UserSQL;
 
 @Controller
 public class EntranceController {
-
+    @GetMapping("/")
+    public String FacePage(Model model) {
+        model.addAttribute("title", "Добро пожаловать");
+        return "FacePage";
+    }
     @GetMapping("/entrance")
     public String Entrance(Model model) {
         model.addAttribute("title", "Вход");
         return "Entrance/Entrance";
-    }
-    @GetMapping("entrance/firstpage")
-    public String FirstPage(Model model) {
-        model.addAttribute("title", "Добро пожаловать");
-        return "Entrance/FirstPage";
     }
     @GetMapping("entrance/registration")
     public String Registration(Model model) {
@@ -35,15 +34,15 @@ public class EntranceController {
         MasterSQL m = new MasterSQL();
         UserSQL a = new UserSQL(m);
         if (a.CheckUser(email, password))
-            return "redirect:/";
+            return "redirect:/main";
         else
-            return "Entrance/Entrance";
+            return "redirect:/entrance";
     }
     @PostMapping("entrance/registration")
     private String SignIn(@RequestParam String email, @RequestParam String password, @RequestParam String institute, @RequestParam String group, Model model) throws SQLException, ClassNotFoundException {
         MasterSQL m = new MasterSQL();
         UserSQL a = new UserSQL(m);
         a.AddUser(email, password);
-        return "Entrance/Entrance";
+        return "redirect:/entrance";
     }
 }
