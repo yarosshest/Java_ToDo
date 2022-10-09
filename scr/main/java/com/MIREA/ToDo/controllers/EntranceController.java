@@ -34,7 +34,7 @@ public class EntranceController {
         MasterSQL m = new MasterSQL();
         UserSQL a = new UserSQL(m);
         if (a.CheckUser(email, password))
-            return "redirect:/main";
+            return "redirect:/main/0";
         else
             return "redirect:/entrance";
     }
