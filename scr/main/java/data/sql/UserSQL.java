@@ -28,13 +28,20 @@ public class UserSQL {
         return true;
     }
 
-    public boolean AddUser(String Ulog, String Upass) throws SQLException {
+    public int AddUser(String Ulog, String Upass) throws SQLException {
         if (CheckLogin(Ulog)){
-            m.stat.execute("INSERT INTO User (login, passwd) VALUES ('"+Ulog+"', '"+Upass+"');");
-            return true;
+            String sql = "INSERT INTO User (login, passwd) VALUES ('\"+Ulog+\"', '\"+Upass+\"');";
+            PreparedStatement ps = m.c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.execute();
+            ResultSet rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                return rs.getInt(1);
+            } else {
+                return -1;
+            }
         }
         else {
-            return false;
+            return -1;
         }
     }
 
