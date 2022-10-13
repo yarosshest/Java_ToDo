@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
     <title th:text="${title}"/>
@@ -31,85 +32,195 @@
 </head>
 
 <body class="text-center">
-<header th:insert="TaskManager/header :: header"></header>
+    <header th:insert="TaskManager/header :: header"></header>
 
-<div th:each="day : ${schedule}" class="table-responsive">
-    <table class="table table-striped table-sm">
-        <thead>
-            <tr class="calendar-view-header">
-                <th>
-                    <div>Понедельник</div>
-                </th>
-                <th>
-                    <div>Вторник</div>
-                </th>
-                <th>
-                    <div>Среда</div>
-                </th>
-                <th>
-                    <div>Четверг</div>
-                </th>
-                <th>
-                    <div>Пятница</div>
-                </th>
-                <th>
-                    <div>Суббота</div>
-                </th>
-                <th>
-                    <div>Воскресенье</div>
-                </th>
-                <th class="weekly-totals weekly-totals-header">
-                    <div>Результаты за неделю</div>
-                </th>
-            </tr>
-            </thead>
-        <tbody>
-            <tr>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">26</span>
-                    </div>
-                    <p th:text="${day.monday}"/>
-                    <div></div>
-                </td>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">27</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">28</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">29</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">30</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">1</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data current-day  ">
-                    <div class="day-header">
-                        <span class="day-number">2</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="weekly-totals weekly-totals-data">
-                    <dl>
+    <div th:each="day : ${schedule}" class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr class="calendar-view-header">
+                    <th>
+                        <div>Понедельник</div>
+                    </th>
+                    <th>
+                        <div>Вторник</div>
+                    </th>
+                    <th>
+                        <div>Среда</div>
+                    </th>
+                    <th>
+                        <div>Четверг</div>
+                    </th>
+                    <th>
+                        <div>Пятница</div>
+                    </th>
+                    <th>
+                        <div>Суббота</div>
+                    </th>
+                    <th>
+                        <div>Воскресенье</div>
+                    </th>
+                    <th class="weekly-totals weekly-totals-header">
+                        <div>Результаты за неделю</div>
+                    </th>
+                </tr>
+                </thead>
+            <tbody>
+                <tr>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">26</span>
+                        </div>
+                        <p th:text="${day.monday}"/>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">27</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">28</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">29</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">30</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">1</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data current-day  ">
+                        <div class="day-header">
+                            <span class="day-number">2</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="weekly-totals weekly-totals-data">
+                        <dl>
+                            <dt>Расстояние:</dt>
+                            <dd>0,00 км</dd>
+                            <dt>Время:</dt>
+                            <dd>0:00:00</dd>
+                            <dt>Калории:</dt>
+                            <dd>0</dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">3</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">4</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">5</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">6</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">7</span>
+                        </div>
+                        <div>
+
+                        </div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">8</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">9</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="weekly-totals weekly-totals-data">
+                        <dl>
+                            <dt>Расстояние:</dt>
+                            <dd>0,00 км</dd>
+                            <dt>Время:</dt>
+                            <dd>0:00:00</dd>
+                            <dt>Калории:
+                            </dt>
+                            <dd>0</dd>
+                        </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">10</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">11</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">12</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">13</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">14</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">15</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">16</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="weekly-totals weekly-totals-data"><dl>
                         <dt>Расстояние:</dt>
                         <dd>0,00 км</dd>
                         <dt>Время:</dt>
@@ -117,280 +228,170 @@
                         <dt>Калории:</dt>
                         <dd>0</dd>
                     </dl>
-                </td>
-            </tr>
-            <tr>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">3</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">4</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">5</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">6</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">7</span>
-                    </div>
-                    <div>
-
-                    </div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">8</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">9</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="weekly-totals weekly-totals-data">
-                    <dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">17</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">18</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">19</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">20</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">21</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">22</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">23</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="weekly-totals weekly-totals-data"><dl>
                         <dt>Расстояние:</dt>
                         <dd>0,00 км</dd>
                         <dt>Время:</dt>
                         <dd>0:00:00</dd>
-                        <dt>Калории:
-                        </dt>
+                        <dt>Калории:</dt>
                         <dd>0</dd>
                     </dl>
-                </td>
-            </tr>
-            <tr>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">10</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">11</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">12</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">13</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">14</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">15</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">16</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="weekly-totals weekly-totals-data"><dl>
-                    <dt>Расстояние:</dt>
-                    <dd>0,00 км</dd>
-                    <dt>Время:</dt>
-                    <dd>0:00:00</dd>
-                    <dt>Калории:</dt>
-                    <dd>0</dd>
-                </dl>
-                </td>
-            </tr>
-            <tr>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">17</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">18</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">19</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">20</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">21</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">22</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">23</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="weekly-totals weekly-totals-data"><dl>
-                    <dt>Расстояние:</dt>
-                    <dd>0,00 км</dd>
-                    <dt>Время:</dt>
-                    <dd>0:00:00</dd>
-                    <dt>Калории:</dt>
-                    <dd>0</dd>
-                </dl>
-                </td>
-            </tr>
-            <tr>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">24</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">25</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">26</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">27</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">28</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">29</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">30</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="weekly-totals weekly-totals-data"><dl>
-                    <dt>Расстояние:</dt>
-                    <dd>0,00 км</dd>
-                    <dt>Время:</dt>
-                    <dd>0:00:00</dd>
-                    <dt>Калории:</dt>
-                    <dd>0</dd>
-                </dl>
-                </td>
-            </tr>
-            <tr>
-                <td class="calendar-data   ">
-                    <div class="day-header">
-                        <span class="day-number">31</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">1</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">2</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">3</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">4</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">5</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="calendar-data outside-current-date  ">
-                    <div class="day-header">
-                        <span class="day-number">6</span>
-                    </div>
-                    <div></div>
-                </td>
-                <td class="weekly-totals weekly-totals-data"><dl>
-                    <dt>Расстояние:</dt>
-                    <dd>0,00 км</dd>
-                    <dt>Время:</dt>
-                    <dd>0:00:00</dd>
-                    <dt>Калории:</dt>
-                    <dd>0</dd>
-                </dl>
-                </td>
-            </tr>
-            </tbody>
-    </table>
-</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">24</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">25</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">26</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">27</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">28</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">29</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">30</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="weekly-totals weekly-totals-data"><dl>
+                        <dt>Расстояние:</dt>
+                        <dd>0,00 км</dd>
+                        <dt>Время:</dt>
+                        <dd>0:00:00</dd>
+                        <dt>Калории:</dt>
+                        <dd>0</dd>
+                    </dl>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="calendar-data   ">
+                        <div class="day-header">
+                            <span class="day-number">31</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">1</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">2</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">3</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">4</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">5</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="calendar-data outside-current-date  ">
+                        <div class="day-header">
+                            <span class="day-number">6</span>
+                        </div>
+                        <div></div>
+                    </td>
+                    <td class="weekly-totals weekly-totals-data"><dl>
+                        <dt>Расстояние:</dt>
+                        <dd>0,00 км</dd>
+                        <dt>Время:</dt>
+                        <dd>0:00:00</dd>
+                        <dt>Калории:</dt>
+                        <dd>0</dd>
+                    </dl>
+                    </td>
+                </tr>
+                </tbody>
+        </table>
+    </div>
 
 </body>
 

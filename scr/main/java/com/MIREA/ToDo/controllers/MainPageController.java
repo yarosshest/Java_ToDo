@@ -10,10 +10,9 @@ import java.util.ArrayList;
 @Controller
 public class MainPageController {
 
-    @GetMapping("/main/{uid}")
-    public String MainPage(@PathVariable(value="uid") String uid, Model model) {
+    @GetMapping("/main")
+    public String MainPage(Model model) {
         model.addAttribute("title", "Главная страница");
-        model.addAttribute("uid", uid);
 
         ArrayList<Week> schedule = new ArrayList<>();  // return from UserId.FindUser(uid)
         schedule.add(new Week("MATAN"));

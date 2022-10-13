@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
     <title th:text="${title}"/>
@@ -49,16 +50,22 @@
 <body class="text-center">
 
 <main class="form-signin w-100 m-auto">
-    <form action="/entrance" method="post">
+    <div th:if="${param.error}">
+        <h1> Invalid username and password. </h1>
+    </div>
+    <div th:if="${param.logout}">
+        <h1> You have been logged out. </h1>
+    </div>
+
+    <form th:action="@{/login}" method="post">
+
         <h1 class="h3 mb-3 fw-normal mt-100">Please sign in</h1>
 
-        <div class="form-floating">
-            <input type="email" name="email" class="form-control" id="floatingInput" placeholder="example.com">
-            <label for="floatingInput">Email address</label>
+        <div>
+            <input type="email" id="floatingInput" placeholder="Email" name="username"/>
         </div>
-        <div class="form-floating">
-            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+        <div>
+            <input type="password" id="floatingPassword" placeholder="Password" name="password">
         </div>
 
         <div class="checkbox mb-3">
@@ -66,13 +73,34 @@
                 <input type="checkbox" value="remember-me"> Remember me
             </label>
         </div>
-        <button type="submit" class="btn btn-success">Log in</button>
-        <a href="/entrance/registration" class="w-100 btn btn-lg btn-primary " type="submit" >Registration</a>
+        <div><input type="submit" value="Вход"/></div>
+        <a href="/registration" type="submit" >Регистрация</a>
         <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
     </form>
 </main>
 </body>
 
-
-
 </html>
+
+<!--
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Spring Security Example </title>
+</head>
+<body>
+<div th:if="${param.error}">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<form th:action="@{/login}" method="post">
+    <div><label> User Name : <input type="text" name="username"/> </label></div>
+    <div><label> Password: <input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="Sign In"/></div>
+</form>
+</body>
+</html>
+-->

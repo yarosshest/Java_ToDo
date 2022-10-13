@@ -18,31 +18,40 @@ public class EntranceController {
         model.addAttribute("title", "Добро пожаловать");
         return "FacePage";
     }
-    @GetMapping("/entrance")
+    /*
+    @GetMapping("/login")
     public String Entrance(Model model) {
         model.addAttribute("title", "Вход");
-        return "Entrance/Entrance";
-    }
-    @GetMapping("entrance/registration")
-    public String Registration(Model model) {
-        model.addAttribute("title", "Регистрация");
-        return "Entrance/Registration";
+        return "Login/Login";
     }
 
-    @PostMapping("/entrance")
+    @GetMapping("/login/registration")
+    public String Registration(Model model) {
+        model.addAttribute("title", "Регистрация");
+        return "login/registration";
+    }
+
+    @PostMapping("/login")
     private String LogIn(@RequestParam String email, @RequestParam String password, Model model) throws SQLException, ClassNotFoundException {
         MasterSQL m = new MasterSQL();
         UserSQL a = new UserSQL(m);
         if (a.CheckUser(email, password))
-            return "redirect:/main/0";
+            return "redirect:/main/";
         else
-            return "redirect:/entrance";
+            return "redirect:/login";
     }
-    @PostMapping("entrance/registration")
-    private String SignIn(@RequestParam String email, @RequestParam String password, @RequestParam String institute, @RequestParam String group, Model model) throws SQLException, ClassNotFoundException {
+
+    */
+    @GetMapping("/registration")
+    public String Registration(Model model) {
+        model.addAttribute("title", "Регистрация");
+        return "Login/Registration";
+    }
+    @PostMapping("/registration")
+    private String SignIn(@RequestParam String email, @RequestParam String password, Model model) throws SQLException, ClassNotFoundException {
         MasterSQL m = new MasterSQL();
         UserSQL a = new UserSQL(m);
         a.AddUser(email, password);
-        return "redirect:/entrance";
+        return "redirect:/login";
     }
 }
