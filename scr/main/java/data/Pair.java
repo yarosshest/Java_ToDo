@@ -1,5 +1,6 @@
 package data;
 
+import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 
 public class Pair {
@@ -19,7 +20,7 @@ public class Pair {
 	private final String[] teacher;
 
 	public Pair(XSSFRow[] row, int index_discipline) {
-		this.number = row[ODD_WEEK].getCell(CELL_NUMBER_PAIR).getStringCellValue();
+		this.number = Double.toString(row[ODD_WEEK].getCell(CELL_NUMBER_PAIR).getNumericCellValue());
 		this.begin = row[ODD_WEEK].getCell(CELL_BEGIN).getStringCellValue();
 		this.end = row[ODD_WEEK].getCell(CELL_END).getStringCellValue();
 		discipline = new String[COUNT_WEEK];
