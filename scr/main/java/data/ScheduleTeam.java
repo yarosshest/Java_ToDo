@@ -24,7 +24,9 @@ public class ScheduleTeam extends ScheduleCourse {
 		String path_new_file = thisDir.toString();
 		System.out.println(path_new_file);
 		*/
-		String path_new_file = "scr/main/resources/ScheduleTable/"+this.GetInstitute()+"_"+this.GetCourse()+".xlsx";
+		String path_new_file = "scr/main/resources/Schedules/"+this.GetInstitute()+"_"+this.GetCourse()+".xlsx";
+		File file = new File(path_new_file);
+		file.delete();
 		try {
 			URL url = new URL(this.url);
 			Path exel_schedule = Path.of(path_new_file);
@@ -88,7 +90,7 @@ public class ScheduleTeam extends ScheduleCourse {
 
 	public static void main(String[] args) {
 		ScheduleTeam obj = new ScheduleTeam(
-				new ScheduleCourse("IIT", "2", "https://webservices.mirea.ru/upload/iblock/46a/9yjndqsdw1eib3dfubn2rn2h1l3ios0p/IIT_2-kurs_22_23_osen_07.10.2022.xlsx")
+				new ScheduleCourse("IIT", "2", "https://webservices.mirea.ru/upload/iblock/348/jtw5jxfxeg97nm59b686315waa3htq92/IIT_2-kurs_22_23_osen_07.10.2022.xlsx")
 				, "ИКБО-06-21"
 		);
 		obj.ClearSchedule();

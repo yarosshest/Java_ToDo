@@ -10,8 +10,9 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
 import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.Set;
+import data.ScheduleTeam;
+import data.ScheduleCourse;
 
 @Component
 public class SetupDataLoader implements
@@ -43,8 +44,17 @@ public class SetupDataLoader implements
         user.setGroup("Test");
         user.setRoles(Set.of(adminRole));
         userRepository.save(user);
-
+        createSchedules();
         alreadySetup = true;
+    }
+
+    @Transactional
+    void createSchedules() {
+        ScheduleTeam obj = new ScheduleTeam(
+                new ScheduleCourse("IIT", "2", "https://webservices.mirea.ru/upload/iblock/348/jtw5jxfxeg97nm59b686315waa3htq92/IIT_2-kurs_22_23_osen_07.10.2022.xlsx")
+                , "ИКБО-06-21"
+        );
+
     }
 
     @Transactional
