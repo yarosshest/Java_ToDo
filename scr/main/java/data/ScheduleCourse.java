@@ -2,7 +2,7 @@ package data;
 
 import java.io.File;
 
-class ScheduleCourse {
+public class ScheduleCourse {
 	private final String institute;
 	private final String course;
 	protected final String url;

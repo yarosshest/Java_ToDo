@@ -1,7 +1,11 @@
 package com.MIREA.ToDo.controllers;
 
+import com.MIREA.ToDo.entity.User;
+import com.MIREA.ToDo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +17,9 @@ import data.sql.UserSQL;
 
 @Controller
 public class EntranceController {
+
+    @Autowired
+    private UserService userService;
     @GetMapping("/")
     public String FacePage(Model model) {
         model.addAttribute("title", "Добро пожаловать");
@@ -48,10 +55,12 @@ public class EntranceController {
         return "Login/Registration";
     }
     @PostMapping("/registration")
-    private String SignIn(@RequestParam String email, @RequestParam String password, Model model) throws SQLException, ClassNotFoundException {
-        MasterSQL m = new MasterSQL();
-        UserSQL a = new UserSQL(m);
-        a.AddUser(email, password);
+    private String addUser(@RequestParam String email, @RequestParam String password, @RequestParam String institute, @RequestParam String group, Model model){
+        User u = new User(email,password, institute, group);
+        if (!userService.saveUser(u)){
+            model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
+            return "registration";
+        }
         return "redirect:/login";
     }
 }

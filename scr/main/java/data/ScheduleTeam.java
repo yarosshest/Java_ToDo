@@ -69,7 +69,7 @@ public class ScheduleTeam extends ScheduleCourse {
 		}
 	}
 
-	ScheduleTeam(ScheduleCourse obj_course, String team) {
+	public ScheduleTeam(ScheduleCourse obj_course, String team) {
 		super(obj_course.GetInstitute(), obj_course.GetCourse(), obj_course.GetUrl());  // here you can obj_course.institute ...
 		String path;
 		if (obj_course.PathExist()) {
