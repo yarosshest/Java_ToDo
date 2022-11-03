@@ -38,20 +38,20 @@ public class SetupDataLoader implements
 
         Role adminRole = roleRepository.findByName("ROLE_ADMIN");
         User user = new User();
-        user.setUsername("Test");
+        user.setUsername("Test@T");
         user.setPassword("Test");
         user.setUniversity("Test");
         user.setGroup("Test");
         user.setRoles(Set.of(adminRole));
         userRepository.save(user);
-        createSchedules();
+//        createSchedules();
         alreadySetup = true;
     }
 
     @Transactional
     void createSchedules() {
         ScheduleTeam obj = new ScheduleTeam(
-                new ScheduleCourse("IIT", "2", "https://webservices.mirea.ru/upload/iblock/348/jtw5jxfxeg97nm59b686315waa3htq92/IIT_2-kurs_22_23_osen_07.10.2022.xlsx")
+                new ScheduleCourse("IIT", "2", "https://webservices.mirea.ru/upload/iblock/6c9/jifmf42ev2vi0oa03d1vddyaqvrrauni/IIT_2-kurs_22_23_osen_07.10.2022.xlsx")
                 , "ИКБО-06-21"
         );
 

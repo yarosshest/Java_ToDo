@@ -59,7 +59,7 @@ public class EntranceController {
         User u = new User(email,password, institute, group);
         if (!userService.saveUser(u)){
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
-            return "registration";
+            return "Login/Registration";
         }
         return "redirect:/login";
     }

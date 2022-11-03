@@ -90,7 +90,7 @@ public class ScheduleTeam extends ScheduleCourse {
 
 	public static void main(String[] args) {
 		ScheduleTeam obj = new ScheduleTeam(
-				new ScheduleCourse("IIT", "2", "https://webservices.mirea.ru/upload/iblock/348/jtw5jxfxeg97nm59b686315waa3htq92/IIT_2-kurs_22_23_osen_07.10.2022.xlsx")
+				new ScheduleCourse("IIT", "2", "https://webservices.mirea.ru/upload/iblock/6c9/jifmf42ev2vi0oa03d1vddyaqvrrauni/IIT_2-kurs_22_23_osen_07.10.2022.xlsx")
 				, "ИКБО-06-21"
 		);
 		obj.ClearSchedule();
