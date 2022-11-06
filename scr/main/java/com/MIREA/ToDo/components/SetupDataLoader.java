@@ -1,7 +1,9 @@
 package com.MIREA.ToDo.components;
 
+import com.MIREA.ToDo.entity.Note;
 import com.MIREA.ToDo.entity.Role;
 import com.MIREA.ToDo.entity.User;
+import com.MIREA.ToDo.repository.NoteRepository;
 import com.MIREA.ToDo.repository.RoleRepository;
 import com.MIREA.ToDo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,9 @@ public class SetupDataLoader implements
     @Autowired
     private RoleRepository roleRepository;
 
+//    @Autowired
+//    private NoteRepository noteRepository;
+
     @Override
     @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -45,6 +50,12 @@ public class SetupDataLoader implements
         user.setRoles(Set.of(adminRole));
         userRepository.save(user);
 //        createSchedules();
+
+//        Note note = new Note();
+//        note.setTitle("000");
+//        note.setText("111");
+//        noteRepository.save(note);
+
         alreadySetup = true;
     }
 

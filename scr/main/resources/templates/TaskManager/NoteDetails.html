@@ -16,9 +16,13 @@
 
 <div class="container mt-5">
   <h1>Записи</h1>
-  <div th:each="note : ${notes}" class="alert alert-info mt-2">
+  <div th:each="note : ${note}" class="alert alert-info mt-2">
     <h3 th:text="${note.GetTitle()}"/>
-    <a th:href="'/main/notes/' + ${note.GetId()}">Детальнее</a>
+    <p th:text="${note.GetText()}"/>
+    <a th:href="'/main/notes/' + ${note.GetId()} +'/edit'">Редактировать</a>
+    <form th:action="'/main/notes/' + ${note.GetId()} +'/remove'" method="post">
+      <button th:href="'/main/notes/' + ${note.GetId()} +'/remove'" type="submit">Удалить</button>
+    </form>
   </div>
 </div>
 
