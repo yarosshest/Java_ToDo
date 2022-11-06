@@ -58,23 +58,18 @@
     </div>
 
     <form th:action="@{/login}" method="post">
-
-        <h1 class="h3 mb-3 fw-normal mt-100">Please sign in</h1>
-
-        <div>
-            <input type="email" id="floatingInput" placeholder="Email" name="username"/>
+        <img class="mb-4" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/MIREA_logo.png/640px-MIREA_logo.png" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal mt-100">Пожалуйста, авторизуйтесь</h1>
+        <div class="form-floating">
+            <input type="email" class="form-control" id="floatingInput" placeholder="Email" name="username"/>
         </div>
-        <div>
-            <input type="password" id="floatingPassword" placeholder="Password" name="password">
+            <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
         </div>
 
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <div><input type="submit" value="Вход"/></div>
-        <a href="/registration" type="submit" >Регистрация</a>
+        <div><input type="submit" class="w-100 btn btn-lg btn-primary" value="Вход"/></div>
+        <br>
+        <a href="/registration" type="submit" class="w-100 btn btn-lg btn-primary" >Регистрация</a>
         <p class="mt-5 mb-3 text-muted">© 2017–2022</p>
     </form>
 </main>
