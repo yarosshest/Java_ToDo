@@ -12,11 +12,7 @@ public class Day {
     private Long id;
 
     private String date;
+    private int weekday;
 
     private String name_group;
-
-
-
-
-
 }
