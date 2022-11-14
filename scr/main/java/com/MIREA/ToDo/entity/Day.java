@@ -11,8 +11,7 @@ public class Day {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String group;
     private String date;
     private int weekday;
-
-    private String name_group;
 }

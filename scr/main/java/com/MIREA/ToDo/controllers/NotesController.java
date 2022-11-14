@@ -2,7 +2,10 @@ package com.MIREA.ToDo.controllers;
 
 import com.MIREA.ToDo.entity.Note;
 import com.MIREA.ToDo.repository.NoteRepository;
+import com.MIREA.ToDo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,13 +18,18 @@ import java.util.Optional;
 
 @Controller
 public class NotesController {
+
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private NoteRepository noteRepository;
 
     @GetMapping("/main/notes")
     public String Notes(Model model) {
         model.addAttribute("title", "Заметки");
-        Iterable<Note> notes = noteRepository.findAll();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Long uid = userRepository.findByUsername(authentication.getName()).getId();
+        Iterable<Note> notes = noteRepository.findAllByIdOwn(uid);
         model.addAttribute("notes", notes);
         return "TaskManager/Notes";
     }
@@ -33,7 +41,9 @@ public class NotesController {
 
     @PostMapping("/main/notes/add")
     public String AddNote(@RequestParam String title, @RequestParam String text, Model model) {
-        Note node = new Note(title, text);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Long uid = userRepository.findByUsername(authentication.getName()).getId();
+        Note node = new Note(uid, title, text);
         noteRepository.save(node);
         return "redirect:/main/notes";
     }

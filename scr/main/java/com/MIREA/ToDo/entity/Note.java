@@ -9,19 +9,30 @@ public class Note {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long idOwn;
+
     private String title;
     private String data;
     private String text;
 
     public Note() {
     }
-    public Note(String title, String text) {
+    public Note(Long idOwn, String title, String text) {
+        this.idOwn = idOwn;
         this.title = title;
         this.text = text;
     }
 
     public Long GetId() {
         return id;
+    }
+
+    public Long getIdOwn() {
+        return idOwn;
+    }
+
+    public void setIdOwn(Long idOwn) {
+        this.idOwn = idOwn;
     }
 
     public String GetTitle() {
