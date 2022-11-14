@@ -1,11 +1,11 @@
-package com.MIREA.ToDo.controllers;
+package com.MIREA.ToDo.entity;
 
 // example class for MainPageController
 // Then delete
 public class Week {
     public String monday;
 
-    Week(String md) {
+    public Week(String md) {
         this.monday = md;
     }
 }

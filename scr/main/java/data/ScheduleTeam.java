@@ -8,6 +8,8 @@ import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ScheduleTeam extends ScheduleCourse {
 	private static final int COUNT_WEEKDAY = 6;
@@ -15,8 +17,8 @@ public class ScheduleTeam extends ScheduleCourse {
 	private static final int NAME_WEEKDAY_COLUMN_INDEX = 0;
 	private static final int MIN_ROW_INDEX = 3, STEP_ROW_INDEX = 12;
 
-	private final String team;
-	private final Day[] list_days_schedule;
+	private final String group;
+	private final List<DayParser> list_days_schedule;
 
 	private String DownloadWorkbook() {
 		/*
@@ -57,11 +59,11 @@ public class ScheduleTeam extends ScheduleCourse {
 			int position = 5;
 			XSSFRow row_title = sheet.getRow(NAME_TEAM_ROW_INDEX);
 			for (int i = 0; !find & i < row_title.getLastCellNum(); i++) {
-				if (row_title.getCell(position).getStringCellValue().equals(this.team)) {
+				if (row_title.getCell(position).getStringCellValue().equals(this.group)) {
 					for (int index = 0; index < COUNT_WEEKDAY; index++) {
 						int row_index = MIN_ROW_INDEX + index * STEP_ROW_INDEX;
 						String name = sheet.getRow(row_index).getCell(NAME_WEEKDAY_COLUMN_INDEX).getStringCellValue();
-						this.list_days_schedule[index] = new Day(name, sheet, row_index, position);
+						this.list_days_schedule.add(new DayParser(name, sheet, row_index, position));
 					}
 					find = true;
 				}
@@ -81,16 +83,18 @@ public class ScheduleTeam extends ScheduleCourse {
 			obj_course.SetPath(path);
 		}
 		this.path = path;
-		this.team = team;
-		this.list_days_schedule = new Day[COUNT_WEEKDAY];
+		this.group = team;
+		this.list_days_schedule = new ArrayList<>();
 		this.Reload();
 	}
 
-	public final Day GetDay(int weekday) { return list_days_schedule[weekday]; }
+	public final DayParser GetDay(int weekday) { return list_days_schedule.get(weekday); }
+
+	public final List<DayParser> GetListDay() { return list_days_schedule; }
 
 	public static void main(String[] args) {
 		ScheduleTeam obj = new ScheduleTeam(
-				new ScheduleCourse("IIT", "2", "https://webservices.mirea.ru/upload/iblock/6c9/jifmf42ev2vi0oa03d1vddyaqvrrauni/IIT_2-kurs_22_23_osen_07.10.2022.xlsx")
+				new ScheduleCourse("IIT", "2", "https://webservices.mirea.ru/upload/iblock/5b1/ga54kas7srca03glyejl0qocavazep16/IIT_2-kurs_22_23_osen_07.10.2022.xlsx")
 				, "ИКБО-06-21"
 		);
 		obj.ClearSchedule();
