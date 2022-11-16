@@ -13,14 +13,14 @@ public class Pair {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String group;
+    private String studygr;
 
     private int weekday;
     private int parity;
 
     private String number;
     private String begin;
-    private String end;
+    private String end_t;
 
     private String discipline;
     private String type_occupation;
@@ -34,18 +34,18 @@ public class Pair {
         this.parity = parity;
         this.number = pairParser.GetNumber();
         this.begin = pairParser.GetBegin();
-        this.end = pairParser.GetEnd();
+        this.end_t = pairParser.GetEnd();
         this.discipline = pairParser.GetDiscipline(parity);
         this.type_occupation = pairParser.GetTypeOccupation(parity);
         this.teacher = pairParser.GetTeacher(parity);
     }
 
     public String getGroup() {
-        return group;
+        return studygr;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
+    public void setGroup(String studygr) {
+        this.studygr = studygr;
     }
 
     public int getWeekday() {
@@ -81,11 +81,11 @@ public class Pair {
     }
 
     public String getEnd() {
-        return end;
+        return end_t;
     }
 
     public void setEnd(String end) {
-        this.end = end;
+        this.end_t = end;
     }
 
     public String getDiscipline() {

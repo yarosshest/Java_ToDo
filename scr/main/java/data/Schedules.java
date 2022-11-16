@@ -51,6 +51,7 @@ public class Schedules {
 //        Calendar now = Calendar.getInstance();
 //        int year = now.get(Calendar.YEAR) % 100;
 //        int course = year - Integer.parseInt(team.trim());
+        course = course + " курс";
         for (ScheduleCourse it: list_urls_schedules) {
             if (it.GetInstitute().equals(institution) && it.GetCourse().equals(course)) {
                 return new ScheduleTeam(it, team);

@@ -20,7 +20,7 @@ import java.util.List;
 
 @Controller
 public class EntranceController {
-    private static final int COUNT_WEEKDAY = 7;
+    private static final int COUNT_WEEKDAY = 6;
     @Autowired
     private UserService userService;
     @Autowired
@@ -45,7 +45,7 @@ public class EntranceController {
 
         Calendar now = Calendar.getInstance();
         int year = now.get(Calendar.YEAR) % 100;
-        int course = year - Integer.parseInt(group.trim());
+        int course = year - Integer.parseInt(group.trim().substring(8,10)) + 1;
         ScheduleTeam scheduleTeam = schedules.GetScheduleTeam(institute, String.valueOf(course), group);
         for (DayParser dayParser : scheduleTeam.GetListDay()) {
             List<PairParser> pairs = dayParser.GetListPair();

@@ -1,9 +1,7 @@
 package com.MIREA.ToDo.controllers;
 
-import com.MIREA.ToDo.entity.Day;
 import com.MIREA.ToDo.entity.Pair;
 import com.MIREA.ToDo.entity.Week;
-import com.MIREA.ToDo.repository.DayRepository;
 import com.MIREA.ToDo.repository.PairRepository;
 import com.MIREA.ToDo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +34,7 @@ public class MainPageController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String group = userRepository.findByUsername(authentication.getName()).getGroup();
-        Optional<Pair> pairs = pairRepository.findAllByGroup(group);
+        Optional<Pair> pairs = pairRepository.findAllByStudygr(group);
         ArrayList<Pair> res = new ArrayList<>();
         pairs.ifPresent(res::add);
         //TODO: add attribute in model
