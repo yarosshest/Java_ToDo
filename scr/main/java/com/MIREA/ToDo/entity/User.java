@@ -102,8 +102,8 @@ public class User implements UserDetails {
         return university;
     }
 
-    public void setGroup(String test) {
-        this.user_group = test;
+    public void setGroup(String user_group) {
+        this.user_group = user_group;
     }
 
     public String getGroup() {

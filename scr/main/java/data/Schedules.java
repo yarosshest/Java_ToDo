@@ -8,6 +8,7 @@ import org.jsoup.select.Elements;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Schedules {
     private final ArrayList<ScheduleCourse> list_urls_schedules;
@@ -47,6 +48,10 @@ public class Schedules {
     }
 
     public ScheduleTeam GetScheduleTeam(String institution, String course, String team){
+//        Calendar now = Calendar.getInstance();
+//        int year = now.get(Calendar.YEAR) % 100;
+//        int course = year - Integer.parseInt(team.trim());
+        course = course + " курс";
         for (ScheduleCourse it: list_urls_schedules) {
             if (it.GetInstitute().equals(institution) && it.GetCourse().equals(course)) {
                 return new ScheduleTeam(it, team);
