@@ -34,11 +34,65 @@ public class MainPageController {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String group = userRepository.findByUsername(authentication.getName()).getGroup();
-        Optional<Pair> pairs = pairRepository.findAllByStudygr(group);
-        ArrayList<Pair> res = new ArrayList<>();
-        pairs.ifPresent(res::add);
-        //TODO: add attribute in model
-//        model.addAttribute("pairs", res);
+        List<Pair> pairs = pairRepository.findAllByStudygr(group);
+        ArrayList<Pair> res = (ArrayList<Pair>) pairs;
+
+        ArrayList<Pair> monday = new ArrayList<>();
+        ArrayList<Pair> tuesday = new ArrayList<>();
+        ArrayList<Pair> wednesday = new ArrayList<>();
+        ArrayList<Pair> thursday = new ArrayList<>();
+        ArrayList<Pair> friday = new ArrayList<>();
+        ArrayList<Pair> saturday = new ArrayList<>();
+        int week = 0;
+        for (Pair pair : res) {
+            switch (pair.getWeekday()) {
+                case 0:
+                    if (pair.getParity() == week) {
+                        monday.add(pair);
+                    }
+                    monday.add(pair);
+                    break;
+                case 1:
+                    if (pair.getParity() == week) {
+                        tuesday.add(pair);
+                    }
+                    break;
+                case 2:
+                    if (pair.getParity() == week) {
+                        wednesday.add(pair);
+                    }
+                    break;
+                case 3:
+                    if (pair.getParity() == week) {
+                        thursday.add(pair);
+                    }
+                    break;
+                case 4:
+                    if (pair.getParity() == week) {
+                        friday.add(pair);
+                    }
+                    break;
+                case 5:
+                    if (pair.getParity() == week) {
+                        saturday.add(pair);
+                    }
+                    break;
+            }
+        }
+        monday.sort(Pair::compareTo);
+        tuesday.sort(Pair::compareTo);
+        wednesday.sort(Pair::compareTo);
+        thursday.sort(Pair::compareTo);
+        friday.sort(Pair::compareTo);
+        saturday.sort(Pair::compareTo);
+
+        model.addAttribute("monday", monday);
+        model.addAttribute("tuesday", tuesday);
+        model.addAttribute("wednesday", wednesday);
+        model.addAttribute("thursday", thursday);
+        model.addAttribute("friday", friday);
+        model.addAttribute("saturday", saturday);
+
 
         return "TaskManager/MainPage";
     }

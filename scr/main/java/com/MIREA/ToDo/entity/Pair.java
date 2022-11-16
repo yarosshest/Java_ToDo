@@ -38,6 +38,7 @@ public class Pair {
         this.discipline = pairParser.GetDiscipline(parity);
         this.type_occupation = pairParser.GetTypeOccupation(parity);
         this.teacher = pairParser.GetTeacher(parity);
+        this.studygr = group;
     }
 
     public String getGroup() {
@@ -110,5 +111,10 @@ public class Pair {
 
     public void setTeacher(String teacher) {
         this.teacher = teacher;
+    }
+
+    public int compareTo(Pair pr) {
+
+        return (int) (Float.parseFloat(this.number) - Float.parseFloat(pr.number));
     }
 }
