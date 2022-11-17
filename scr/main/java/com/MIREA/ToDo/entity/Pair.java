@@ -18,7 +18,7 @@ public class Pair {
     private int weekday;
     private int parity;
 
-    private String number;
+    private int number;
     private String begin;
     private String end_t;
 
@@ -32,7 +32,7 @@ public class Pair {
     public Pair(String group, int weekday, int parity, PairParser pairParser) {
         this.weekday = weekday;
         this.parity = parity;
-        this.number = pairParser.GetNumber();
+        this.number = (int)Float.parseFloat(pairParser.GetNumber());
         this.begin = pairParser.GetBegin();
         this.end_t = pairParser.GetEnd();
         this.discipline = pairParser.GetDiscipline(parity);
@@ -65,11 +65,11 @@ public class Pair {
         this.parity = parity;
     }
 
-    public String getNumber() {
+    public int getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(int number) {
         this.number = number;
     }
 
@@ -115,6 +115,6 @@ public class Pair {
 
     public int compareTo(Pair pr) {
 
-        return (int) (Float.parseFloat(this.number) - Float.parseFloat(pr.number));
+        return this.number - pr.number;
     }
 }

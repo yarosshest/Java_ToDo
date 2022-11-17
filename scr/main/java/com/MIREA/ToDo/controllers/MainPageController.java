@@ -43,7 +43,6 @@ public class MainPageController {
                     if (pair.getParity() == week) {
                         monday.add(pair);
                     }
-                    monday.add(pair);
                     break;
                 case 1:
                     if (pair.getParity() == week) {

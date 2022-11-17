@@ -39,11 +39,13 @@
                 <thead>
                 <tr>
                     <th> Понедельник </th>
+                    <th> Пара </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="par : ${monday}">
                     <td><span th:text="${par.discipline}"> Понедельник </span></td>
+                    <td><span th:text="${par.number}"> Пара </span></td>
                 </tr>
                 </tbody>
             </table>
@@ -53,11 +55,13 @@
                 <thead>
                 <tr>
                     <th> Вторник </th>
+                    <th> Пара </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="par : ${tuesday}">
                     <td><span th:text="${par.discipline}"> Вторник </span></td>
+                    <td><span th:text="${par.number}"> Пара </span></td>
                 </tr>
                 </tbody>
             </table>
@@ -68,11 +72,13 @@
                 <thead>
                 <tr>
                     <th> Среда </th>
+                    <th> Пара </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="par : ${wednesday}">
                     <td><span th:text="${par.discipline}"> Среда </span></td>
+                    <td><span th:text="${par.number}"> Пара </span></td>
                 </tr>
                 </tbody>
             </table>
@@ -83,11 +89,13 @@
                 <thead>
                 <tr>
                     <th> Четверг </th>
+                    <th> Пара </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="par : ${thursday}">
                     <td><span th:text="${par.discipline}"> Четверг </span></td>
+                    <td><span th:text="${par.number}"> Пара </span></td>
                 </tr>
                 </tbody>
             </table>
@@ -98,11 +106,13 @@
                 <thead>
                 <tr>
                     <th> Пятница </th>
+                    <th> Пара </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="par : ${friday}">
                     <td><span th:text="${par.discipline}"> Пятница </span></td>
+                    <td><span th:text="${par.number}"> Пара </span></td>
                 </tr>
                 </tbody>
             </table>
@@ -113,11 +123,13 @@
                 <thead>
                 <tr>
                     <th> Суббота </th>
+                    <th> Пара </th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="par : ${saturday}">
                     <td><span th:text="${par.discipline}"> Суббота </span></td>
+                    <td><span th:text="${par.number}"> Пара </span></td>
                 </tr>
                 </tbody>
             </table>

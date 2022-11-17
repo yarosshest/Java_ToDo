@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class PairService {
 
-    private static final int COUNT_WEEKDAY = 6;
+    private static final int COUNT_WEEKDAY = 7;
 
     @Autowired
     private PairRepository pairRepository;
