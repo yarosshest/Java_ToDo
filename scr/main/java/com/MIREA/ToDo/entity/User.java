@@ -17,7 +17,7 @@ public class User implements UserDetails {
 
     private String university;
 
-    private String user_group;
+    private String studygr;
 
     private String password;
     @ManyToMany(fetch = FetchType.EAGER)
@@ -30,7 +30,7 @@ public class User implements UserDetails {
         this.username = email;
         this.password = password;
         this.university = university;
-        this.user_group = group;
+        this.studygr = group;
 
     }
 
@@ -103,10 +103,10 @@ public class User implements UserDetails {
     }
 
     public void setGroup(String user_group) {
-        this.user_group = user_group;
+        this.studygr = user_group;
     }
 
     public String getGroup() {
-        return user_group;
+        return studygr;
     }
 }

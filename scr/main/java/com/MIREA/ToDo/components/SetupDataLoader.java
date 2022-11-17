@@ -4,6 +4,8 @@ import com.MIREA.ToDo.entity.Note;
 import com.MIREA.ToDo.entity.Role;
 import com.MIREA.ToDo.entity.User;
 import com.MIREA.ToDo.repository.NoteRepository;
+import com.MIREA.ToDo.service.PairService;
+import com.MIREA.ToDo.service.UserService;
 import com.MIREA.ToDo.repository.RoleRepository;
 import com.MIREA.ToDo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,12 @@ public class SetupDataLoader implements
     private UserRepository userRepository;
 
     @Autowired
+    private PairService pairService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
     private RoleRepository roleRepository;
 
 //    @Autowired
@@ -45,17 +53,11 @@ public class SetupDataLoader implements
         User user = new User();
         user.setUsername("Test@T");
         user.setPassword("Test");
-        user.setUniversity("Test");
-        user.setGroup("Test");
+        user.setUniversity("Институт информационных технологий");
+        user.setGroup("ИКБО-06-21");
         user.setRoles(Set.of(adminRole));
-        userRepository.save(user);
-//        createSchedules();
-
-//        Note note = new Note();
-//        note.setTitle("000");
-//        note.setText("111");
-//        noteRepository.save(note);
-
+        userService.saveUser(user);
+        pairService.updatePairs();
         alreadySetup = true;
     }
 

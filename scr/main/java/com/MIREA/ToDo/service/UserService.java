@@ -23,6 +23,10 @@ public class UserService implements UserDetailsService {
     private EntityManager em;
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    PairService pairService;
+
     @Autowired
     RoleRepository roleRepository;
     @Autowired
@@ -58,6 +62,7 @@ public class UserService implements UserDetailsService {
         user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+        pairService.updatePairs();
         return true;
     }
 

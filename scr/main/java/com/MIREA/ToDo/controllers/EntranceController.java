@@ -3,6 +3,7 @@ package com.MIREA.ToDo.controllers;
 import com.MIREA.ToDo.entity.Pair;
 import com.MIREA.ToDo.entity.User;
 import com.MIREA.ToDo.repository.PairRepository;
+import com.MIREA.ToDo.service.PairService;
 import com.MIREA.ToDo.service.UserService;
 import data.DayParser;
 import data.PairParser;
@@ -23,6 +24,9 @@ public class EntranceController {
     private static final int COUNT_WEEKDAY = 6;
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private PairService pairService;
     @Autowired
     static private Schedules schedules = new Schedules();
     @Autowired
@@ -43,17 +47,7 @@ public class EntranceController {
     private String addUser(@RequestParam String email, @RequestParam String password, @RequestParam String institute, @RequestParam String group, Model model){
         User u = new User(email,password, institute, group);
 
-        Calendar now = Calendar.getInstance();
-        int year = now.get(Calendar.YEAR) % 100;
-        int course = year - Integer.parseInt(group.trim().substring(8,10)) + 1;
-        ScheduleTeam scheduleTeam = schedules.GetScheduleTeam(institute, String.valueOf(course), group);
-        for (DayParser dayParser : scheduleTeam.GetListDay()) {
-            List<PairParser> pairs = dayParser.GetListPair();
-            for (int i = 0; i < COUNT_WEEKDAY; i++) {
-                pairRepository.save(new Pair(group, i, Pair.ODD_WEEK, pairs.get(i)));
-                pairRepository.save(new Pair(group, i, Pair.EVEN_WEEK, pairs.get(i)));
-            }
-        }
+        pairService.updatePairs();
 
         if (!userService.saveUser(u)){
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");

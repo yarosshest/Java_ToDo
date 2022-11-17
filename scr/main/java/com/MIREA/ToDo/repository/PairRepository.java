@@ -9,4 +9,5 @@ import java.util.Optional;
 
 public interface PairRepository extends JpaRepository<Pair, Long> {
     List<Pair> findAllByStudygr(String studygr);
+    void deleteAll();
 }
