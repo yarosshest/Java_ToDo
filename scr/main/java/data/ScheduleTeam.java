@@ -15,7 +15,7 @@ public class ScheduleTeam extends ScheduleCourse {
 	private static final int COUNT_WEEKDAY = 6;
 	private static final int NAME_TEAM_ROW_INDEX = 1;
 	private static final int NAME_WEEKDAY_COLUMN_INDEX = 0;
-	private static final int MIN_ROW_INDEX = 3, STEP_ROW_INDEX = 12;
+	private static final int MIN_ROW_INDEX = 3, STEP_ROW_INDEX = 14;
 
 	private final String group;
 	private final List<DayParser> list_days_schedule;

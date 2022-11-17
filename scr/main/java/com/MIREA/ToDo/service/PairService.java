@@ -40,12 +40,14 @@ public class PairService {
             int year = now.get(Calendar.YEAR) % 100;
             int course = year - Integer.parseInt(group.trim().substring(8,10)) + 1;
             ScheduleTeam scheduleTeam = schedules.GetScheduleTeam(univesiti, String.valueOf(course), group);
+            int weekday = 0;
             for (DayParser dayParser : scheduleTeam.GetListDay()) {
                 List<PairParser> pairs = dayParser.GetListPair();
                 for (int j = 0; j < COUNT_WEEKDAY; j++) {
-                    pairRepository.save(new Pair(group, j, Pair.ODD_WEEK, pairs.get(j)));
-                    pairRepository.save(new Pair(group, j, Pair.EVEN_WEEK, pairs.get(j)));
+                    pairRepository.save(new Pair(group, weekday, Pair.ODD_WEEK, pairs.get(j)));
+                    pairRepository.save(new Pair(group, weekday, Pair.EVEN_WEEK, pairs.get(j)));
                 }
+                weekday += 1;
             }
         }
     }
