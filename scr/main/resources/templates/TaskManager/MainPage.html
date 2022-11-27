@@ -26,71 +26,71 @@
     <link href="dashboard.css" rel="stylesheet">
 </head>
 
-<body class="iksweb">
+<body>
     <header th:insert="TaskManager/header :: header"></header>
-    <table class="iksweb1">
+    <table>
         <tr>
             <td>
-    <table class="iksweb">
-        <tbody>
-        <tr>
-            <th>Понедельник</th>
-            <th>Пары</th>
-        </tr>
-        <tr>
-        <tr th:each="par : ${monday}">
-            <td><span rowspan="2" th:text="${par.discipline}"> Понедельник </span></td>
-            <td><span th:text="${par.number}"> Пара </span>
-        </tr>
-        <tr>
-            <th>Вторник</th>
-            <th>Пары</th>
-        </tr>
-        </tr>
-        <tr th:each="par : ${tuesday}">
-            <td><span th:text="${par.discipline}"> Четверг </span></td>
-            <td><span th:text="${par.number}"> Пара </span></td>
-        </tr>
-        <tr>
-            <th>Среда</th>
-            <th>Пары</th>
-        </tr>
-        <tr th:each="par : ${wednesday}">
-            <td><span th:text="${par.discipline}"> Четверг </span></td>
-            <td><span th:text="${par.number}"> Пара </span></td>
-        </tr>
-        </tbody>
-    </table>
+                <table class="iksweb">
+                    <tbody>
+                        <tr>
+                            <th>Понедельник</th>
+                            <th>Пары</th>
+                        </tr>
+                        <tr>
+                        <tr th:each="par : ${monday}">
+                            <td><span rowspan="2" th:text="${par.discipline}"> Понедельник </span></td>
+                            <td><span th:text="${par.number}"> Пара </span>
+                        </tr>
+                        <tr>
+                            <th>Вторник</th>
+                            <th>Пары</th>
+                        </tr>
+                        </tr>
+                        <tr th:each="par : ${tuesday}">
+                            <td><span th:text="${par.discipline}"> Четверг </span></td>
+                            <td><span th:text="${par.number}"> Пара </span></td>
+                        </tr>
+                        <tr>
+                            <th>Среда</th>
+                            <th>Пары</th>
+                        </tr>
+                        <tr th:each="par : ${wednesday}">
+                            <td><span th:text="${par.discipline}"> Четверг </span></td>
+                            <td><span th:text="${par.number}"> Пара </span></td>
+                        </tr>
+                    </tbody>
+                </table>
             </td>
             <td>
-        <table class="iksweb">
-            <tbody>
-        <tr>
-            <th>Четверг</th>
-            <th>Пары</th>
-        </tr>
-        <tr th:each="par : ${thursday}">
-            <td><span th:text="${par.discipline}"> Четверг </span></td>
-            <td><span th:text="${par.number}"> Пара </span></td>
-        </tr>
-        <tr>
-            <th>Пятница</th>
-            <th>Пары</th>
-        </tr>
-        <tr th:each="par : ${friday}">
-            <td><span th:text="${par.discipline}"> Четверг </span></td>
-            <td><span th:text="${par.number}"> Пара </span></td>
-        </tr>
-        <tr>
-            <th>Суббота</th>
-            <th>Пары</th>
-        </tr>
-        <tr th:each="par : ${saturday}">
-            <td><span th:text="${par.discipline}"> Четверг </span></td>
-            <td><span th:text="${par.number}"> Пара </span></td>
-        </tr>
-        </tbody>
-    </table>
+                <table class="iksweb">
+                    <tbody>
+                        <tr>
+                            <th>Четверг</th>
+                            <th>Пары</th>
+                        </tr>
+                        <tr th:each="par : ${thursday}">
+                            <td><span th:text="${par.discipline}"> Четверг </span></td>
+                            <td><span th:text="${par.number}"> Пара </span></td>
+                        </tr>
+                        <tr>
+                            <th>Пятница</th>
+                            <th>Пары</th>
+                        </tr>
+                        <tr th:each="par : ${friday}">
+                            <td><span th:text="${par.discipline}"> Четверг </span></td>
+                            <td><span th:text="${par.number}"> Пара </span></td>
+                        </tr>
+                        <tr>
+                            <th>Суббота</th>
+                            <th>Пары</th>
+                        </tr>
+                        <tr th:each="par : ${saturday}">
+                            <td><span th:text="${par.discipline}"> Четверг </span></td>
+                            <td><span th:text="${par.number}"> Пара </span></td>
+                        </tr>
+                </tbody>
+            </table>
             </td>
         </tr>
     </table>

@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "t_pair")
 public class Pair {
-    public static final int ODD_WEEK = 0, EVEN_WEEK = 1;
+    public static final int ODD_WEEK = 1, EVEN_WEEK = 0;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -11,7 +11,7 @@ public class PairParser {
 	private static final int SHIFT_CELL_TYPE_OCCUPATION = 1;
 	private static final int SHIFT_CELL_TEACHER = 2;
 	private static final int COUNT_WEEK = 2;
-	private static final int ODD_WEEK = 0, EVEN_WEEK = 1;
+	private static final int ODD_WEEK = 1;
 
 	private final String number;
 	private final String begin;

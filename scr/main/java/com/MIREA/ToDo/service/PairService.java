@@ -43,9 +43,9 @@ public class PairService {
             int weekday = 0;
             for (DayParser dayParser : scheduleTeam.GetListDay()) {
                 List<PairParser> pairs = dayParser.GetListPair();
-                for (int j = 0; j < COUNT_WEEKDAY; j++) {
-                    pairRepository.save(new Pair(group, weekday, Pair.ODD_WEEK, pairs.get(j)));
-                    pairRepository.save(new Pair(group, weekday, Pair.EVEN_WEEK, pairs.get(j)));
+                for (PairParser pair: pairs) {
+                    pairRepository.save(new Pair(group, weekday, Pair.ODD_WEEK, pair));
+                    pairRepository.save(new Pair(group, weekday, Pair.EVEN_WEEK, pair));
                 }
                 weekday += 1;
             }

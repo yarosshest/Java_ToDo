@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Controller
@@ -36,39 +38,29 @@ public class MainPageController {
         ArrayList<Pair> thursday = new ArrayList<>();
         ArrayList<Pair> friday = new ArrayList<>();
         ArrayList<Pair> saturday = new ArrayList<>();
-        int week = 0;
+        int week = GetWeek();
         for (Pair pair : res) {
-            switch (pair.getWeekday()) {
-                case 0:
-                    if (pair.getParity() == week) {
+            if (pair.getParity() == week) {
+                switch (pair.getWeekday()) {
+                    case 0:
                         monday.add(pair);
-                    }
-                    break;
-                case 1:
-                    if (pair.getParity() == week) {
+                        break;
+                    case 1:
                         tuesday.add(pair);
-                    }
-                    break;
-                case 2:
-                    if (pair.getParity() == week) {
+                        break;
+                    case 2:
                         wednesday.add(pair);
-                    }
-                    break;
-                case 3:
-                    if (pair.getParity() == week) {
+                        break;
+                    case 3:
                         thursday.add(pair);
-                    }
-                    break;
-                case 4:
-                    if (pair.getParity() == week) {
+                        break;
+                    case 4:
                         friday.add(pair);
-                    }
-                    break;
-                case 5:
-                    if (pair.getParity() == week) {
+                        break;
+                    case 5:
                         saturday.add(pair);
-                    }
-                    break;
+                        break;
+                }
             }
         }
         monday.sort(Pair::compareTo);
@@ -87,5 +79,17 @@ public class MainPageController {
 
 
         return "TaskManager/MainPage";
+    }
+
+    private int GetWeek() {
+        Calendar start_ed;
+        Calendar now = Calendar.getInstance();
+        int cur_month = now.get(Calendar.MONTH);
+        if (cur_month >= 1 && cur_month <= 7) {  // TODO: when does the academic year of the second semester begin
+            start_ed = new GregorianCalendar(Calendar.YEAR, Calendar.FEBRUARY, 1);
+        } else {
+            start_ed = new GregorianCalendar(Calendar.YEAR, Calendar.SEPTEMBER, 1);
+        }
+        return (now.get(Calendar.WEEK_OF_YEAR) - start_ed.get(Calendar.WEEK_OF_YEAR)) % 2;
     }
 }

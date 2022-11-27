@@ -20,8 +20,8 @@ public class DayParser {
 		list_pairs_day = new ArrayList<>();
 		XSSFRow[] row = new XSSFRow[COUNT_WEEK];
 		for (int index = 0; index < COUNT_PAIR*2; index += COUNT_WEEK) {
-			row[0] = sheet.getRow(row_index + index);  // odd week
-			row[1] = sheet.getRow(row_index + index + 1);  // even week
+			row[1] = sheet.getRow(row_index + index);  // even week
+			row[0] = sheet.getRow(row_index + index + 1);  // odd week
 			list_pairs_day.add(new PairParser(row, index_discipline));
 		}
 	}
