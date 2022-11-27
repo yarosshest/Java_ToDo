@@ -11,16 +11,18 @@ public class Note {
 
     private Long idOwn;
 
+    private String discipline;
     private String title;
     private String data;
     private String text;
 
     public Note() {
     }
-    public Note(Long idOwn, String title, String text) {
+    public Note(Long idOwn, String title, String text, String discipline) {
         this.idOwn = idOwn;
         this.title = title;
         this.text = text;
+        this.discipline = discipline;
     }
 
     public Long GetId() {
@@ -59,4 +61,11 @@ public class Note {
         this.text = text;
     }
 
+    public String getDiscipline() {
+        return discipline;
+    }
+
+    public void setDiscipline(String discipline) {
+        this.discipline = discipline;
+    }
 }

@@ -23,15 +23,17 @@ public class Pair {
     private String end_t;
 
     private String discipline;
+    private Long discipline_id;
     private String type_occupation;
     private String teacher;
 
     public Pair() {
     }
 
-    public Pair(String group, int weekday, int parity, PairParser pairParser) {
+    public Pair(String group, int weekday, int parity, Long discipline_id, PairParser pairParser) {
         this.weekday = weekday;
         this.parity = parity;
+        this.discipline_id = discipline_id;
         this.number = (int)Float.parseFloat(pairParser.GetNumber());
         this.begin = pairParser.GetBegin();
         this.end_t = pairParser.GetEnd();
@@ -41,76 +43,20 @@ public class Pair {
         this.studygr = group;
     }
 
-    public String getGroup() {
-        return studygr;
-    }
-
-    public void setGroup(String studygr) {
-        this.studygr = studygr;
-    }
-
     public int getWeekday() {
         return weekday;
     }
-
-    public void setWeekday(int weekday) {
-        this.weekday = weekday;
-    }
-
     public int getParity() {
         return parity;
     }
-
-    public void setParity(int parity) {
-        this.parity = parity;
-    }
-
     public int getNumber() {
         return number;
     }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public String getBegin() {
-        return begin;
-    }
-
-    public void setBegin(String begin) {
-        this.begin = begin;
-    }
-
-    public String getEnd() {
-        return end_t;
-    }
-
-    public void setEnd(String end) {
-        this.end_t = end;
-    }
-
     public String getDiscipline() {
         return discipline;
     }
-
-    public void setDiscipline(String discipline) {
-        this.discipline = discipline;
-    }
-
-    public String getType_occupation() {
-        return type_occupation;
-    }
-
-    public void setType_occupation(String type_occupation) {
-        this.type_occupation = type_occupation;
-    }
-
-    public String getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(String teacher) {
-        this.teacher = teacher;
+    public Long getDisciplineId() {
+        return discipline_id;
     }
 
     public int compareTo(Pair pr) {

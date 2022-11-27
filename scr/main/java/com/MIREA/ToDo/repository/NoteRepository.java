@@ -8,4 +8,5 @@ import java.util.List;
 public interface NoteRepository extends JpaRepository<Note, Long> {
     Note findByTitle(String title);
     List<Note> findAllByIdOwn(Long id);
+    List<Note> findAllByIdOwnAndDiscipline(Long id, String discipline);
 }

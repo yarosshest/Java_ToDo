@@ -67,6 +67,12 @@
   <form action="/main/notes/add" method="post">
       <input type="text" name="title" placeholder="Введите название записи" class="form-control"><br>
       <textarea name="text" placeholder="Введите текст записи" class="form-control"></textarea><br>
+      <div class="col-12">
+        <label for="Discipline" class="form-label">Выберите дисцеплину</label>
+        <select name="discipline" class="form-control" id="Discipline" required="">
+          <option th:each="discipline : ${disciplines}" th:text="${discipline.getDiscipline()}"></option>
+        </select>
+      </div><br>
     <button type="submit" class="btn btn-success">Добавить</button>
   </form>
 </main>

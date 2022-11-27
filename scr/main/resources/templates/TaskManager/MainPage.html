@@ -39,7 +39,8 @@
                         </tr>
                         <tr>
                         <tr th:each="par : ${monday}">
-                            <td><span rowspan="2" th:text="${par.discipline}"> Понедельник </span></td>
+                            <td><a th:text="${par.discipline}" th:href="'/main/notes/discipline/' + ${par.getDisciplineId()}"/>
+                            </td>
                             <td><span th:text="${par.number}"> Пара </span>
                         </tr>
                         <tr>
@@ -48,7 +49,7 @@
                         </tr>
                         </tr>
                         <tr th:each="par : ${tuesday}">
-                            <td><span th:text="${par.discipline}"> Четверг </span></td>
+                            <td><a th:text="${par.discipline}" th:href="'/main/notes/discipline/' + ${par.getDisciplineId()}"/></td>
                             <td><span th:text="${par.number}"> Пара </span></td>
                         </tr>
                         <tr>
@@ -56,7 +57,7 @@
                             <th>Пары</th>
                         </tr>
                         <tr th:each="par : ${wednesday}">
-                            <td><span th:text="${par.discipline}"> Четверг </span></td>
+                            <td><a th:text="${par.discipline}" th:href="'/main/notes/discipline/' + ${par.getDisciplineId()}"/></td>
                             <td><span th:text="${par.number}"> Пара </span></td>
                         </tr>
                     </tbody>
@@ -70,7 +71,7 @@
                             <th>Пары</th>
                         </tr>
                         <tr th:each="par : ${thursday}">
-                            <td><span th:text="${par.discipline}"> Четверг </span></td>
+                            <td><a th:text="${par.discipline}" th:href="'/main/notes/discipline/' + ${par.getDisciplineId()}"/></td>
                             <td><span th:text="${par.number}"> Пара </span></td>
                         </tr>
                         <tr>
@@ -78,7 +79,7 @@
                             <th>Пары</th>
                         </tr>
                         <tr th:each="par : ${friday}">
-                            <td><span th:text="${par.discipline}"> Четверг </span></td>
+                            <td><a th:text="${par.discipline}" th:href="'/main/notes/discipline/' + ${par.getDisciplineId()}"/></td>
                             <td><span th:text="${par.number}"> Пара </span></td>
                         </tr>
                         <tr>
@@ -86,7 +87,7 @@
                             <th>Пары</th>
                         </tr>
                         <tr th:each="par : ${saturday}">
-                            <td><span th:text="${par.discipline}"> Четверг </span></td>
+                            <td><a th:text="${par.discipline}" th:href="'/main/notes/discipline/' + ${par.getDisciplineId()}"/></td>
                             <td><span th:text="${par.number}"> Пара </span></td>
                         </tr>
                 </tbody>

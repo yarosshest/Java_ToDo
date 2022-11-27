@@ -1,7 +1,8 @@
 package com.MIREA.ToDo.service;
 
+import com.MIREA.ToDo.entity.Discipline;
 import com.MIREA.ToDo.entity.Pair;
-import com.MIREA.ToDo.entity.User;
+import com.MIREA.ToDo.repository.DisciplineRepository;
 import com.MIREA.ToDo.repository.PairRepository;
 import com.MIREA.ToDo.repository.UserRepository;
 import data.DayParser;
@@ -11,6 +12,8 @@ import data.Schedules;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -21,7 +24,8 @@ public class PairService {
 
     @Autowired
     private PairRepository pairRepository;
-
+    @Autowired
+    private DisciplineRepository disciplineRepository;
     @Autowired
     private UserRepository userRepository;
 
@@ -44,8 +48,14 @@ public class PairService {
             for (DayParser dayParser : scheduleTeam.GetListDay()) {
                 List<PairParser> pairs = dayParser.GetListPair();
                 for (PairParser pair: pairs) {
-                    pairRepository.save(new Pair(group, weekday, Pair.ODD_WEEK, pair));
-                    pairRepository.save(new Pair(group, weekday, Pair.EVEN_WEEK, pair));
+                    String discipline;
+                    for (int parity : new ArrayList<>(Arrays.asList(Pair.EVEN_WEEK, Pair.ODD_WEEK))){
+                        discipline = pair.GetDiscipline(parity);
+                        if (!disciplineRepository.existsByDiscipline(discipline))
+                            disciplineRepository.save(new Discipline(discipline));
+                        Long discipline_id = disciplineRepository.findAllByDiscipline(discipline).getId();
+                        pairRepository.save(new Pair(group, weekday, parity, discipline_id, pair));
+                    }
                 }
                 weekday += 1;
             }

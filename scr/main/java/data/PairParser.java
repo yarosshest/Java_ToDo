@@ -4,6 +4,8 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PairParser {
 	private static final int CELL_NUMBER_PAIR = 1;
@@ -21,15 +23,33 @@ public class PairParser {
 	private final List<String> type_occupation;
 	private final List<String> teacher;
 
+	private List<String> information;
+
 	public PairParser(XSSFRow[] row, int index_discipline) {
 		this.number = Double.toString(row[ODD_WEEK].getCell(CELL_NUMBER_PAIR).getNumericCellValue());
 		this.begin = row[ODD_WEEK].getCell(CELL_BEGIN).getStringCellValue();
 		this.end = row[ODD_WEEK].getCell(CELL_END).getStringCellValue();
 		discipline = new ArrayList<>();
+		information = new ArrayList<>();
 		type_occupation = new ArrayList<>();
 		teacher = new ArrayList<>();
 		for (int index = 0; index < COUNT_WEEK; index++) {
-			this.discipline.add(row[index].getCell(index_discipline).getStringCellValue());
+			String discipline = row[index].getCell(index_discipline).getStringCellValue().trim();
+			Pattern pattern = Pattern.compile("^[а-я0-9]+.*? [А-Я]");
+			Pattern nw_line = Pattern.compile("\n");
+
+			Matcher matcher = pattern.matcher(discipline);
+			Matcher matcher_nw_line = nw_line.matcher(discipline);
+			if (matcher_nw_line.find()) {
+				discipline = discipline.substring(0, matcher_nw_line.start());
+			}
+			if (matcher.find()) {
+				this.discipline.add(discipline.substring(matcher.end()-1));
+				this.information.add(discipline.substring(0, matcher.end()-1));
+			} else {
+				this.discipline.add(discipline);
+				this.information.add("");
+			}
 			this.type_occupation.add(row[index].getCell(index_discipline + SHIFT_CELL_TYPE_OCCUPATION).getStringCellValue());
 			this.teacher.add(row[index].getCell(index_discipline + SHIFT_CELL_TEACHER).getStringCellValue());
 		}
