@@ -11,16 +11,15 @@
         table.iksweb{text-decoration: none;border-collapse:collapse;width:100%;text-align:center;}
         table.iksweb th{font-weight:normal;font-size:19px; color:#ffffff;background-color:#a8c771;}
         table.iksweb td{font-size:14px;color:#030303;}
-        table.iksweb td,table.iksweb th{padding:6px 18px;line-height:14px;vertical-align: middle;border: 2px solid #354251;}	table.iksweb tr:hover{background-color:#db8b30}
-        table.iksweb tr:hover td{color:#000000;cursor:pointer;}
+        table.iksweb td,table.iksweb th{padding:6px 18px;line-height:14px;vertical-align: middle;border: 0px solid #354251;}
         .mobile-table{width: 100%; max-width: 100%; overflow-x: auto;}
     </style>
     <style>
         table.iksweb1{text-decoration: none;border-collapse:collapse;width:100%;text-align:center;}
         table.iksweb1 th{font-weight:normal;font-size:19px; color:#ffffff;background-color:#a8c771;}
         table.iksweb1 td{font-size:14px;color:#030303;}
-        table.iksweb1 td,table.iksweb th{padding:6px 18px;line-height:14px;vertical-align: middle;border: 2px solid #a8c771;}	table.iksweb1 tr:hover{background-color:#ffffff}
-        table.iksweb1 tr:hover td{color: #f60030;cursor:pointer;}
+        table.iksweb1 td,table.iksweb th{padding:6px 18px;line-height:14px;vertical-align: middle;border: 2px solid #a8c771;}	table.iksweb1 tr:hover{background-color: #ee860f}
+        table.iksweb1 tr:hover td{color: #fc023b;cursor:pointer;}
     </style>
     <div class="mobile-table"> </div>
     <link href="dashboard.css" rel="stylesheet">
@@ -28,10 +27,10 @@
 
 <body>
     <header th:insert="TaskManager/header :: header"></header>
-    <table>
+    <table class="iksweb">
         <tr>
             <td>
-                <table class="iksweb">
+                <table class="iksweb1">
                     <tbody>
                         <tr>
                             <th>Понедельник</th>
@@ -64,7 +63,7 @@
                 </table>
             </td>
             <td>
-                <table class="iksweb">
+                <table class="iksweb1">
                     <tbody>
                         <tr>
                             <th>Четверг</th>
